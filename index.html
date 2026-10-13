@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="MyVault is a personal library for videos and digital files."
+    >
+
+    <title>MyVault | Personal Media Library</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">M</div>
+            <span>MyVault</span>
+        </div>
+
+        <nav class="navigation">
+
+            <button
+                class="nav-item active"
+                data-view="home"
+            >
+                <span>⌂</span>
+                Home
+            </button>
+
+            <button
+                class="nav-item"
+                data-view="videos"
+            >
+                <span>▶</span>
+                All Videos
+            </button>
+
+            <button
+                class="nav-item"
+                data-view="favorites"
+            >
+                <span>☆</span>
+                Favorites
+            </button>
+
+            <button
+                class="nav-item"
+                data-view="recent"
+            >
+                <span>◷</span>
+                Recently Watched
+            </button>
+
+            <button
+                class="nav-item"
+                data-view="files"
+            >
+                <span>▤</span>
+                My Files
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>YOUR PERSONAL LIBRARY</p>
+            <small>Organize. Watch. Learn.</small>
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <button
+                class="icon-button menu-button"
+                id="menuButton"
+                aria-label="Open navigation"
+            >
+                ☰
+            </button>
+
+            <div class="page-heading">
+                <h1 id="pageTitle">My Library</h1>
+                <p id="pageSubtitle">
+                    Your personal digital collection.
+                </p>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button
+                    class="icon-button"
+                    id="themeButton"
+                    aria-label="Toggle color theme"
+                >
+                    ☾
+                </button>
+
+                <div class="avatar">J</div>
+
+            </div>
+
+        </header>
+
+
+        <!-- SEARCH -->
+
+        <section class="search-section">
+
+            <label for="searchInput" class="visually-hidden">
+                Search your library
+            </label>
+
+            <div class="search-box">
+                <span>⌕</span>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search videos, documents and more..."
+                >
+
+                <kbd>SEARCH</kbd>
+            </div>
+
+        </section>
+
+
+        <!-- FEATURED SECTION -->
+
+        <section class="hero" id="heroSection">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    YOUR DIGITAL SPACE
+                </span>
+
+                <h2>Everything you love, in one place.</h2>
+
+                <p>
+                    Keep your videos, learning materials,
+                    documents and other files organized.
+                </p>
+
+                <button
+                    class="primary-button"
+                    id="exploreButton"
+                >
+                    Explore My Library →
+                </button>
+
+            </div>
+
+            <div class="hero-decoration">
+                <div class="hero-play">▶</div>
+                <div class="hero-circle"></div>
+            </div>
+
+        </section>
+
+
+        <!-- QUICK STATISTICS -->
+
+        <section class="stats-grid">
+
+            <article class="stat-card">
+                <span class="stat-icon">▶</span>
+                <div>
+                    <p>Total Videos</p>
+                    <h3 id="videoCount">0</h3>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-icon">▤</span>
+                <div>
+                    <p>Other Files</p>
+                    <h3 id="fileCount">0</h3>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-icon">☆</span>
+                <div>
+                    <p>Favorites</p>
+                    <h3 id="favoriteCount">0</h3>
+                </div>
+            </article>
+
+        </section>
+
+
+        <!-- VIDEO PLAYER -->
+
+        <section class="player-section" id="playerSection">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Now Playing</h2>
+                    <p id="playerDescription">
+                        Select a video from your library.
+                    </p>
+                </div>
+
+                <button
+                    class="text-button"
+                    id="closePlayerButton"
+                >
+                    Close player ×
+                </button>
+            </div>
+
+            <div class="player-wrapper">
+
+                <div class="player-placeholder" id="playerPlaceholder">
+
+                    <div class="placeholder-icon">▶</div>
+
+                    <h3>Your video will appear here</h3>
+
+                    <p>
+                        Select a video below to start watching.
+                    </p>
+
+                </div>
+
+                <iframe
+                    id="videoPlayer"
+                    title="MyVault video player"
+                    src="about:blank"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    hidden
+                ></iframe>
+
+            </div>
+
+            <div class="player-details">
+
+                <div>
+                    <h3 id="playingTitle">No video selected</h3>
+                    <p id="playingCategory">Choose a video to begin.</p>
+                </div>
+
+                <button
+                    class="secondary-button"
+                    id="openDriveButton"
+                    hidden
+                >
+                    Open in Drive ↗
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- VIDEO LIBRARY -->
+
+        <section class="library-section" id="librarySection">
+
+            <div class="section-heading library-heading">
+
+                <div>
+                    <h2 id="libraryTitle">Your Collection</h2>
+                    <p id="resultCount">Browse your personal library.</p>
+                </div>
+
+                <select
+                    id="sortSelect"
+                    aria-label="Sort library"
+                >
+                    <option value="title">Name: A–Z</option>
+                    <option value="newest">Newest first</option>
+                </select>
+
+            </div>
+
+
+            <!-- CATEGORY FILTERS -->
+
+            <div class="category-filters" id="categoryFilters">
+
+                <button
+                    class="category-button active"
+                    data-category="All"
+                >
+                    All
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="Education"
+                >
+                    Education
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="Technology"
+                >
+                    Technology
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="Entertainment"
+                >
+                    Entertainment
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="Other"
+                >
+                    Other
+                </button>
+
+            </div>
+
+
+            <!-- ITEMS APPEAR HERE -->
+
+            <div class="media-grid" id="mediaGrid"></div>
+
+            <div class="empty-state" id="emptyState" hidden>
+
+                <div>⌕</div>
+
+                <h3>Nothing found</h3>
+
+                <p>
+                    Try another search or choose a different category.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+            <p>
+                MyVault © <span id="currentYear"></span>
+                · Your personal digital library
+            </p>
+        </footer>
+
+    </main>
+
+
+    <!-- MOBILE SIDEBAR OVERLAY -->
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+</body>
+</html>
